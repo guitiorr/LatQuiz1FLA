@@ -5,6 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 
 import database.Database;
+import factory.CakeFactory;
+import factory.CupcakeFactory;
+import factory.TartFactory;
+import model.Cake;
+import model.Cupcake;
 
 public class Main {
 	
@@ -285,7 +290,16 @@ public class Main {
 					}
 				}
 				
-				
+				if(typeInput.equals("Cupcake")) {
+					CupcakeFactory factory = new CupcakeFactory();
+					Cake cupcake = factory.createCake(inputPaymentType, nameInput, softnessInput, toppings, priceInput);
+					instance.getCakeList().add(cupcake);
+				}
+				else if(typeInput.equals("Tart")) {
+					TartFactory factory = new TartFactory();
+					Cake tart = factory.createCake(inputPaymentType, nameInput, softnessInput, toppings, priceInput);
+					instance.getCakeList().add(tart);
+				}
 				
 				System.out.println("Confectionary Baked!");
 				System.out.println("Press enter to continue...");

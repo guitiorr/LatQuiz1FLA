@@ -16,6 +16,8 @@ public class Database {
 	
 	public Database() {
 		cakeList = new ArrayList<Cake>();
+		cupcakeList = new ArrayList<Cupcake>();
+		tartList = new ArrayList<Tart>();
 	}
 	
 	public static Database getinstance() {
@@ -25,6 +27,32 @@ public class Database {
 		
 		return instance;
 	}
+
+	public ArrayList<Cake> getCakeList() {
+		return cakeList;
+	}
+
+	public ArrayList<Cupcake> getCupcakeList() {
+		return cupcakeList;
+	}
+
+	public ArrayList<Tart> getTartList() {
+		return tartList;
+	}
+
+	public void setCakeList(ArrayList<Cake> cakeList) {
+		this.cakeList = cakeList;
+	}
+
+	public void setCupcakeList(ArrayList<Cupcake> cupcakeList) {
+		this.cupcakeList = cupcakeList;
+	}
+
+	public void setTartList(ArrayList<Tart> tartList) {
+		this.tartList = tartList;
+	}
+	
+	
 
 	
 	
