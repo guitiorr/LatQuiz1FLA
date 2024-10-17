@@ -41,6 +41,8 @@ public class Main {
 				}
 			};
 			
+			sc.nextLine();
+			
 			switch(choice) {
 			
 			case 1:
@@ -106,7 +108,7 @@ public class Main {
 						while(pass == 0) {
 							System.out.print("Input confectionary softness [Fluffy | Medium | Hard][Case Sensitive]: ");
 							softnessInput = sc.nextLine();
-							if(softnessInput.equals("Fuffy") || softnessInput.equals("Medium") || softnessInput.equals("Hard")) {
+							if(softnessInput.equals("Fluffy") || softnessInput.equals("Medium") || softnessInput.equals("Hard")) {
 								pass = 1;
 								break;
 							}
@@ -149,6 +151,7 @@ public class Main {
 					}
 				}
 				
+				sc.nextLine();
 				//IF YES ADD TOPPING INPUT TOPPINGS
 				if(confirmAddTopping.equals("Y")) {
 					while(true) {
@@ -281,6 +284,7 @@ public class Main {
 				
 				System.out.println("Confectionary Baked!");
 				System.out.println("Press enter to continue...");
+				sc.nextLine();
 				reset = 1;
 				sc.nextLine();
 				
