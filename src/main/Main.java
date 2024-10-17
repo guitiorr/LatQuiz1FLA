@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import database.Database;
+
 public class Main {
 	
 	public static Scanner sc = new Scanner(System.in);
@@ -20,6 +22,9 @@ public class Main {
 		double priceInput = 0;
 		String inputPaymentType = null;
 		ArrayList<String> toppings = new ArrayList<String>();
+		
+		
+		Database instance = Database.getinstance();
 		
 		while(reset == 1) {
 			
@@ -291,6 +296,11 @@ public class Main {
 				break;
 				
 			case 2:
+				
+				
+				
+				
+				
 				
 				break;
 				
