@@ -12,8 +12,8 @@ public class TartFactory extends CakeFactory{
 	}
 
 	@Override
-	public Cake createCake(String type, String name, String softness, ArrayList<String> toppings, double price) {
-		return new Tart(type, name, softness, toppings, price);
+	public Cake createCake(String type, String name, String softness, ArrayList<String> toppings, double price, String paymentType) {
+		return new Tart(type, name, softness, toppings, price, paymentType);
 	}
 
 }

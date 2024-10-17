@@ -8,7 +8,7 @@ import model.Tart;
 
 public abstract class CakeFactory {
 	
-	public abstract Cake createCake(String type, String name, String softness, ArrayList<String> toppings, double price);
+	public abstract Cake createCake(String type, String name, String softness, ArrayList<String> toppings, double price, String paymentType);
 	
 //	public abstract Cake createCake(String type, String name, String softness, ArrayList<String> toppings, double price) {
 //		if(type.equals("Cupcake")) {

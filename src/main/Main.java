@@ -1,15 +1,12 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import database.Database;
-import factory.CakeFactory;
 import factory.CupcakeFactory;
 import factory.TartFactory;
 import model.Cake;
-import model.Cupcake;
 
 public class Main {
 	
@@ -292,12 +289,12 @@ public class Main {
 				
 				if(typeInput.equals("Cupcake")) {
 					CupcakeFactory factory = new CupcakeFactory();
-					Cake cupcake = factory.createCake(inputPaymentType, nameInput, softnessInput, toppings, priceInput);
+					Cake cupcake = factory.createCake(inputPaymentType, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
 					instance.getCakeList().add(cupcake);
 				}
 				else if(typeInput.equals("Tart")) {
 					TartFactory factory = new TartFactory();
-					Cake tart = factory.createCake(inputPaymentType, nameInput, softnessInput, toppings, priceInput);
+					Cake tart = factory.createCake(inputPaymentType, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
 					instance.getCakeList().add(tart);
 				}
 				
@@ -311,10 +308,32 @@ public class Main {
 				
 			case 2:
 				
+				if(instance.getCakeList().isEmpty()) {
+					System.out.println("No Confectionary yet...");
+				}
+				else {
+					ArrayList<Cake> cakes = instance.getCakeList();
+					
+					for(Cake cake : cakes) {
+						System.out.println("Name: " + cake.getName());
+						System.out.println("Softness: " + cake.getSoftness());
+						if(cake.getToppings().isEmpty()) {
+							System.out.println("Topping: -");
+						}
+						else {
+							System.out.println("Topping: " + cake.getToppings());
+						}
+						System.out.println("Payment type: " + cake.getPaymentType());
+						
+						//TODO: ADAPTER
+						System.out.println("Price: " + cake.getPrice());
+					}
+				}
 				
+				System.out.println("Press enter to continue...");
+				sc.nextLine();
 				
-				
-				
+				reset = 1 ;
 				
 				break;
 				
