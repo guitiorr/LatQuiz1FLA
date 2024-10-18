@@ -42,6 +42,7 @@ public class Main {
 					System.out.println("3. Exit");
 					System.out.print(">> ");
 					choice = sc.nextInt();
+					sc.nextLine();
 					break;
 				}
 				catch(Exception e) {
@@ -49,8 +50,6 @@ public class Main {
 					sc.next();
 				}
 			};
-			
-			sc.nextLine();
 			
 			switch(choice) {
 			
@@ -109,6 +108,8 @@ public class Main {
 					}
 				}
 				
+				System.out.println("NAME INPUT : " + nameInput);
+				
 				// INPUT SOFTNESS
 				while(true) {
 					try {
@@ -133,6 +134,8 @@ public class Main {
 						sc.next();
 					}
 				}
+				
+				System.out.println("NAME INPUT : " + nameInput);
 				
 				// INPUT BOOLEAN ADD ADDITIONAL TOPPING?
 				while(true) {
@@ -289,28 +292,27 @@ public class Main {
 					}
 				}
 				
-				if(inputPaymentType.equals("Cash")) {
-					priceInput = priceInput;
-				}
-				else if(inputPaymentType.equals("Transfer")) {
+				if(inputPaymentType.equals("Transfer")) {
 					CashToTransferAdapter adapter = new CashToTransferAdapter(priceInput);
 					priceInput = adapter.getAmount();
 				}
-				else if(inputPaymentType.equals("Transfer")) {
+				else if(inputPaymentType.equals("Crypto")) {
 					CashToCryptoAdapter adapter = new CashToCryptoAdapter(priceInput);
 					priceInput = adapter.getAmount();
 				}
 				
+				System.out.println("NAME INPUT BEFORE FACTORY: " + nameInput);
+				
 				if(typeInput.equals("Cupcake")) {
-					CupcakeFactory factory = new CupcakeFactory();
-					Cake cupcake = factory.createCake(typeInput, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
-					instance.getCakeList().add(cupcake);
+				    CupcakeFactory factory = new CupcakeFactory();
+				    Cake cupcake = factory.createCake(typeInput, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
+				    instance.getCakeList().add(cupcake);
+				} else if(typeInput.equals("Tart")) {
+				    TartFactory factory = new TartFactory();
+				    Cake tart = factory.createCake(typeInput, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
+				    instance.getCakeList().add(tart);
 				}
-				else if(typeInput.equals("Tart")) {
-					TartFactory factory = new TartFactory();
-					Cake tart = factory.createCake(typeInput, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
-					instance.getCakeList().add(tart);
-				}
+
 				
 				System.out.println("Confectionary Baked!");
 				System.out.println("Press enter to continue...");
@@ -345,7 +347,7 @@ public class Main {
 						else if(cake.getPaymentType().equals("Transfer")) {
 							System.out.println("Price: $" + cake.getPrice() + " (Transfer)");
 						}
-						else if(cake.getPaymentType().equals("Transfer")) {
+						else if(cake.getPaymentType().equals("Crypto")) {
 							System.out.println("Price: ADA " + cake.getPrice() + " With Address : 070x072301");
 						}
 					}

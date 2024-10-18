@@ -12,7 +12,7 @@ public class CashToCryptoAdapter extends Crypto{
 
 	@Override
 	public double getAmount() {
-		return super.getAmount() * 1.2;
+		return super.getAmount() / 2;
 	}
 	
 	
