@@ -3,6 +3,8 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import adapter.CashToCryptoAdapter;
+import adapter.CashToTransferAdapter;
 import database.Database;
 import factory.CupcakeFactory;
 import factory.TartFactory;
@@ -287,14 +289,26 @@ public class Main {
 					}
 				}
 				
+				if(inputPaymentType.equals("Cash")) {
+					priceInput = priceInput;
+				}
+				else if(inputPaymentType.equals("Transfer")) {
+					CashToTransferAdapter adapter = new CashToTransferAdapter(priceInput);
+					priceInput = adapter.getAmount();
+				}
+				else if(inputPaymentType.equals("Transfer")) {
+					CashToCryptoAdapter adapter = new CashToCryptoAdapter(priceInput);
+					priceInput = adapter.getAmount();
+				}
+				
 				if(typeInput.equals("Cupcake")) {
 					CupcakeFactory factory = new CupcakeFactory();
-					Cake cupcake = factory.createCake(inputPaymentType, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
+					Cake cupcake = factory.createCake(typeInput, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
 					instance.getCakeList().add(cupcake);
 				}
 				else if(typeInput.equals("Tart")) {
 					TartFactory factory = new TartFactory();
-					Cake tart = factory.createCake(inputPaymentType, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
+					Cake tart = factory.createCake(typeInput, nameInput, softnessInput, toppings, priceInput, inputPaymentType);
 					instance.getCakeList().add(tart);
 				}
 				
@@ -325,8 +339,15 @@ public class Main {
 						}
 						System.out.println("Payment type: " + cake.getPaymentType());
 						
-						//TODO: ADAPTER
-						System.out.println("Price: " + cake.getPrice());
+						if(cake.getPaymentType().equals("Cash")) {
+							System.out.println("Price: $" + cake.getPrice());
+						}
+						else if(cake.getPaymentType().equals("Transfer")) {
+							System.out.println("Price: $" + cake.getPrice() + " (Transfer)");
+						}
+						else if(cake.getPaymentType().equals("Transfer")) {
+							System.out.println("Price: ADA " + cake.getPrice() + " With Address : 070x072301");
+						}
 					}
 				}
 				
